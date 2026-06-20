@@ -1,0 +1,11 @@
+{
+  "name": "ecp-si-app",
+  "version": "1.0.2",
+  "description": "Shipping Instruction Submission Application",
+  "main": "app.js",
+  "scripts": {
+    "bump-version": "node update-version.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

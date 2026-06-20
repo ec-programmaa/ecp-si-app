@@ -1010,3 +1010,46 @@ body {
 .input-valid {
   border-bottom-color: var(--accent-teal) !important;
 }
+
+/* Footer & Version Styling */
+.app-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem 0;
+  margin-top: 1rem;
+  border-top: 1px dashed var(--border-color);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: opacity var(--transition-normal);
+}
+
+.version-separator {
+  color: var(--border-color);
+  font-weight: bold;
+  user-select: none;
+}
+
+.version-badge {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-teal);
+  font-family: 'Courier New', Courier, monospace;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+}
+
+.version-badge:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-focus);
+  background-color: var(--accent-teal-light);
+  color: var(--accent-teal-hover);
+}
+

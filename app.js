@@ -688,6 +688,7 @@ document.addEventListener('DOMContentLoaded', () => {
         packageUnit: volumePackageUnit.value
       },
       portAndVessel: portData,
+      appVersion: document.getElementById('appVersion') ? document.getElementById('appVersion').textContent.trim() : 'v1.0.0',
       submittedAt: new Date().toISOString()
     };
 
