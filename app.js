@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const initialSiData = {
     jobNo: "TCRNE60020",
     bookingParty: "E-SHIP GLOBAL LOGISTICS INDIA PRIVATE L",
-    shipperDetails: "OCEAN GENERATION SHIPPING PVT LTD\nNO 12 NEW SHORELINE BLDG\nPORT ROAD COCHIN INDIA\nPIN 682003",
+    shipperDetails: "E-SHIP GLOBAL LOGISTICS PVT LTD\nNO 12 NEW SHORELINE BLDG\nPORT ROAD COCHIN INDIA\nPIN 682003",
     consigneeDetails: "E-SHIP GLOBAL LOGISTICS INDIA PVT L\nBUILDING 4B PLOT 12\nINDUSTRIAL SECTOR 3 CHENNAI\nPIN 600001",
     notifyDetails: "E-SHIP GLOBAL LOGISTICS INDIA PVT L\nBUILDING 4B PLOT 12\nINDUSTRIAL SECTOR 3 CHENNAI\nPIN 600001",
     blConfiguration: {
@@ -317,7 +317,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Port & Vessel Edit Toggle ---
   btnToggleEditPort.addEventListener('click', () => {
     isEditingPort = !isEditingPort;
-    const inputs = portDetailsContainer.querySelectorAll('.detail-value-input');
+    // Only select the port-related inputs, leaving Vessel and Voyage read-only
+    const inputs = portDetailsContainer.querySelectorAll(
+      '.detail-value-input[name="portReceipt"], .detail-value-input[name="portLoading"], .detail-value-input[name="portDischarge"], .detail-value-input[name="finalDestination"]'
+    );
     
     if (isEditingPort) {
       inputs.forEach(input => input.removeAttribute('readonly'));
@@ -327,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       btnToggleEditPort.classList.remove('btn-secondary-outline');
       btnToggleEditPort.classList.add('btn-secondary');
-      showToast('Port & Vessel details are now editable.', 'info', 2000);
+      showToast('Port details are now editable.', 'info', 2000);
     } else {
       inputs.forEach(input => input.setAttribute('readonly', 'true'));
       btnToggleEditPort.innerHTML = `
@@ -336,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       btnToggleEditPort.classList.remove('btn-secondary');
       btnToggleEditPort.classList.add('btn-secondary-outline');
-      showToast('Port & Vessel details locked.', 'info', 2000);
+      showToast('Port details locked.', 'info', 2000);
     }
   });
 

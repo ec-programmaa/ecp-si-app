@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SI Submission | Ocean Generation Shipping</title>
-  <meta name="description" content="Submit Shipping Instructions (SI) for Ocean Generation Shipping Private Limited. Easy container management, B/L configuration, and automated weight calculations.">
+  <title>SI Submission | E-Ship Global Logistics Private Limited</title>
+  <meta name="description" content="Submit Shipping Instructions (SI) for E-Ship Global Logistics Private Limited. Easy container management, B/L configuration, and automated weight calculations.">
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,7 +20,7 @@
     <header class="app-header">
       <div class="header-left">
         <h1 class="main-title">SI Submission</h1>
-        <p class="subtitle">Ocean Generation Shipping Private Limited</p>
+        <p class="subtitle">E-Ship Global Logistics Private Limited</p>
       </div>
       <div class="header-right">
         <div class="header-card job-card">
@@ -35,6 +35,50 @@
     </header>
 
     <form id="siForm" novalidate>
+      <!-- Row 5: Port & Vessel Details -->
+      <div class="card details-card">
+        <div class="card-header header-has-button">
+          <h2 class="card-title">PORT & VESSEL DETAILS</h2>
+          <button type="button" class="btn btn-secondary-outline btn-small" id="btnToggleEditPort">
+            <!-- Edit Icon -->
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+            <span>Edit Details</span>
+          </button>
+        </div>
+        <div class="card-body flex-column-gapped" id="portDetailsContainer">
+          <!-- Row 1: Port Details -->
+          <div class="grid-4-col">
+            <div class="detail-item">
+              <span class="detail-label">PORT OF RECEIPT</span>
+              <input type="text" class="detail-value-input" name="portReceipt" value="TUTICORIN" maxlength="50" readonly>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">PORT OF LOADING</span>
+              <input type="text" class="detail-value-input" name="portLoading" value="TUTICORIN" maxlength="50" readonly>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">PORT OF DISCHARGE</span>
+              <input type="text" class="detail-value-input" name="portDischarge" value="WEST PORT KLANG, MAL" maxlength="50" readonly>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">FINAL DESTINATION</span>
+              <input type="text" class="detail-value-input" name="finalDestination" value="WEST PORT KLANG, MAL" maxlength="50" readonly>
+            </div>
+          </div>
+          <!-- Row 2: Vessel & Voyage Details -->
+          <div class="grid-2-col">
+            <div class="detail-item">
+              <span class="detail-label">VESSEL</span>
+              <input type="text" class="detail-value-input" name="vessel" value="ZHONG PENG YOU YI" maxlength="50" readonly>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">VOYAGE</span>
+              <input type="text" class="detail-value-input" name="voyage" value="26041" maxlength="50" readonly>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Row 1: Shipper & Consignee Details (Top) -->
       <div class="grid-2-col">
         <!-- Shipper Details (Top) -->
@@ -212,48 +256,8 @@
         </div>
       </div>
 
-      <!-- Row 5: Port & Vessel Details -->
-      <div class="card details-card">
-        <div class="card-header header-has-button">
-          <h2 class="card-title">PORT & VESSEL DETAILS</h2>
-          <button type="button" class="btn btn-secondary-outline btn-small" id="btnToggleEditPort">
-            <!-- Edit Icon -->
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-            <span>Edit Details</span>
-          </button>
-        </div>
-        <div class="card-body">
-          <div class="grid-6-col" id="portDetailsContainer">
-            <div class="detail-item">
-              <span class="detail-label">PORT OF RECEIPT</span>
-              <input type="text" class="detail-value-input" name="portReceipt" value="TUTICORIN" readonly>
-            </div>
-            <div class="detail-item">
-              <span class="detail-label">PORT OF LOADING</span>
-              <input type="text" class="detail-value-input" name="portLoading" value="TUTICORIN" readonly>
-            </div>
-            <div class="detail-item">
-              <span class="detail-label">PORT OF DISCHARGE</span>
-              <input type="text" class="detail-value-input" name="portDischarge" value="WEST PORT KLANG, MAL" readonly>
-            </div>
-            <div class="detail-item">
-              <span class="detail-label">FINAL DESTINATION</span>
-              <input type="text" class="detail-value-input" name="finalDestination" value="WEST PORT KLANG, MAL" readonly>
-            </div>
-            <div class="detail-item">
-              <span class="detail-label">VESSEL</span>
-              <input type="text" class="detail-value-input" name="vessel" value="ZHONG PENG YOU YI" readonly>
-            </div>
-            <div class="detail-item">
-              <span class="detail-label">VOYAGE</span>
-              <input type="text" class="detail-value-input" name="voyage" value="26041" readonly>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!-- Row 6: Shipper & Consignee Details (Bottom - Mirror or Edit) -->
-      <div class="grid-2-col">
+      <div class="grid-2-col" style="display: none;">
         <!-- Shipper Details (Bottom) -->
         <div class="card details-card">
           <div class="card-header header-has-button">
@@ -303,13 +307,14 @@
           <span>SUBMIT SI</span>
         </button>
       </div>
+
     </form>
 
     <!-- Footer -->
     <footer class="app-footer">
-      <span class="footer-text">Ocean Generation Shipping Private Limited</span>
+      <span class="footer-text">E-Ship Global Logistics Private Limited</span>
       <span class="version-separator">•</span>
-      <span class="version-badge" id="appVersion">v1.0.2</span>
+      <span class="version-badge" id="appVersion">v1.0.4</span>
     </footer>
   </div>
 
