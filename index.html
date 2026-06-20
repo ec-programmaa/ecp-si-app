@@ -30,9 +30,21 @@
         <div class="header-card booking-card">
           <span class="card-label">BOOKING PARTY</span>
           <span class="card-value" id="headerBookingParty" title="E-SHIP GLOBAL LOGISTICS INDIA PRIVATE L">E-SHIP GLOBAL LOGISTICS INDIA PRIVATE L</span>
-        </div>
-      </div>
     </header>
+
+    <!-- Status Banner (Hidden by default) -->
+    <div class="status-banner" id="statusBanner" style="display: none;">
+      <div class="status-banner-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div class="status-banner-content">
+        <h3 class="status-banner-title">Shipping Instructions Submitted</h3>
+        <p class="status-banner-text">This case has already been submitted and is currently in status: <strong>SI SUBMITTED</strong>. No further modifications are allowed.</p>
+      </div>
+      <button type="button" class="btn btn-secondary-outline btn-small" id="btnResetStatus" style="margin-left: auto;">
+        <span>Reset Submission</span>
+      </button>
+    </div>
 
     <form id="siForm" novalidate>
       <!-- Row 5: Port & Vessel Details -->
@@ -314,7 +326,7 @@
     <footer class="app-footer">
       <span class="footer-text">E-Ship Global Logistics Private Limited</span>
       <span class="version-separator">•</span>
-      <span class="version-badge" id="appVersion">v1.0.4</span>
+      <span class="version-badge" id="appVersion">v1.0.6</span>
     </footer>
   </div>
 

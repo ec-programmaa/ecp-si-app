@@ -480,7 +480,108 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Page Initialization Logic (Load Mock Data) ---
   
+  function enableStatusView(submittedData) {
+    // 1. Show status banner
+    const statusBanner = document.getElementById('statusBanner');
+    if (statusBanner) {
+      statusBanner.style.display = 'flex';
+    }
+    
+    // 2. Hide edit button for Port details
+    if (btnToggleEditPort) {
+      btnToggleEditPort.style.display = 'none';
+    }
+    
+    // 3. Hide copy consignee button
+    if (btnCopyConsignee) {
+      btnCopyConsignee.style.display = 'none';
+    }
+    
+    // 4. Hide submit button container
+    const submitContainer = document.querySelector('.submit-action-container');
+    if (submitContainer) {
+      submitContainer.style.display = 'none';
+    }
+    
+    // 5. Populate fields from submittedData (if provided)
+    if (submittedData) {
+      if (submittedData.shipperDetails) {
+        shipperDetailsTop.value = submittedData.shipperDetails.top || '';
+        shipperDetailsBottom.value = submittedData.shipperDetails.bottom || '';
+      }
+      if (submittedData.consigneeDetails) {
+        consigneeDetailsTop.value = submittedData.consigneeDetails.top || '';
+        consigneeDetailsBottom.value = submittedData.consigneeDetails.bottom || '';
+      }
+      if (submittedData.notifyDetails) {
+        notifyDetails.value = submittedData.notifyDetails || '';
+      }
+      if (submittedData.blConfiguration) {
+        document.getElementById('noOfOriginalBL').value = submittedData.blConfiguration.noOfOriginalBL || '';
+        document.getElementById('blType').value = submittedData.blConfiguration.blType || '';
+      }
+      
+      // Load Port details
+      if (submittedData.portAndVessel) {
+        document.querySelector('input[name="portReceipt"]').value = submittedData.portAndVessel.portReceipt || '';
+        document.querySelector('input[name="portLoading"]').value = submittedData.portAndVessel.portLoading || '';
+        document.querySelector('input[name="portDischarge"]').value = submittedData.portAndVessel.portDischarge || '';
+        document.querySelector('input[name="finalDestination"]').value = submittedData.portAndVessel.finalDestination || '';
+        document.querySelector('input[name="vessel"]').value = submittedData.portAndVessel.vessel || '';
+        document.querySelector('input[name="voyage"]').value = submittedData.portAndVessel.voyage || '';
+      }
+      
+      // Re-render container rows with submitted values
+      if (submittedData.containers) {
+        renderContainerRows(submittedData.containers);
+      }
+    }
+    
+    // 6. Disable/Make all inputs read-only
+    const allInputs = siForm.querySelectorAll('input, select, textarea');
+    allInputs.forEach(el => {
+      if (el.tagName === 'SELECT') {
+        el.disabled = true;
+      } else {
+        el.setAttribute('readonly', 'true');
+      }
+    });
+    
+    // 7. Hide character/line counters for textareas
+    document.querySelectorAll('.textarea-counter').forEach(el => {
+      el.style.display = 'none';
+    });
+  }
+
+  // Set up Reset button event listener
+  const btnResetStatus = document.getElementById('btnResetStatus');
+  if (btnResetStatus) {
+    btnResetStatus.addEventListener('click', () => {
+      localStorage.removeItem('si_submitted_data_' + initialSiData.jobNo);
+      showToast('Submission status reset. Reloading page...', 'info', 1500);
+      setTimeout(() => {
+        window.location.reload();
+      }, 1500);
+    });
+  }
+
   function initSiApplication() {
+    // 0. Check if already submitted
+    const savedDataStr = localStorage.getItem('si_submitted_data_' + initialSiData.jobNo);
+    if (savedDataStr) {
+      try {
+        const savedData = JSON.parse(savedDataStr);
+        enableStatusView(savedData);
+        // Still need to set headers
+        document.getElementById('headerJobNo').textContent = initialSiData.jobNo;
+        document.getElementById('headerBookingParty').textContent = initialSiData.bookingParty;
+        document.getElementById('headerBookingParty').title = initialSiData.bookingParty;
+        return;
+      } catch (e) {
+        console.error("Error reading saved submission data", e);
+      }
+    }
+
     // 1. Job No and Booking Party
     document.getElementById('headerJobNo').textContent = initialSiData.jobNo;
     document.getElementById('headerBookingParty').textContent = initialSiData.bookingParty;
@@ -698,8 +799,14 @@ document.addEventListener('DOMContentLoaded', () => {
     modalJobNo.textContent = submissionPayload.jobNo;
     jsonSummaryContent.textContent = JSON.stringify(submissionPayload, null, 2);
     
+    // Save to localStorage
+    localStorage.setItem('si_submitted_data_' + submissionPayload.jobNo, JSON.stringify(submissionPayload));
+    
     successModal.classList.add('open');
     showToast('Shipping Instructions submitted successfully!', 'success', 4000);
+    
+    // Enable status view
+    enableStatusView(submissionPayload);
   });
 
   // --- Success Modal actions ---

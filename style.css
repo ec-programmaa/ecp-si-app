@@ -1070,3 +1070,46 @@ body {
   color: var(--accent-teal-hover);
 }
 
+/* Status Banner styling */
+.status-banner {
+  background-color: var(--accent-teal-light);
+  border: 1px solid var(--accent-teal);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 0.5rem;
+  box-shadow: var(--shadow-sm);
+  animation: slideInRow var(--transition-normal) forwards;
+}
+
+.status-banner-icon {
+  background-color: var(--accent-teal);
+  color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-round);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.status-banner-content {
+  flex-grow: 1;
+}
+
+.status-banner-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--accent-teal);
+  margin-bottom: 0.15rem;
+}
+
+.status-banner-text {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
