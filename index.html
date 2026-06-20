@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SI Submission | Ocean Generation Shipping</title>
+  <meta name="description" content="Submit Shipping Instructions (SI) for Ocean Generation Shipping Private Limited. Easy container management, B/L configuration, and automated weight calculations.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Styling -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-left">
+        <h1 class="main-title">SI Submission</h1>
+        <p class="subtitle">Ocean Generation Shipping Private Limited</p>
+      </div>
+      <div class="header-right">
+        <div class="header-card job-card">
+          <span class="card-label">JOB NO</span>
+          <span class="card-value value-red" id="headerJobNo">TCRNE60020</span>
+        </div>
+        <div class="header-card booking-card">
+          <span class="card-label">BOOKING PARTY</span>
+          <span class="card-value" id="headerBookingParty" title="E-SHIP GLOBAL LOGISTICS INDIA PRIVATE L">E-SHIP GLOBAL LOGISTICS INDIA PRIVATE L</span>
+        </div>
+      </div>
+    </header>
+
+    <form id="siForm" novalidate>
+      <!-- Row 1: Shipper & Consignee Details (Top) -->
+      <div class="grid-2-col">
+        <!-- Shipper Details (Top) -->
+        <div class="card details-card">
+          <div class="card-header">
+            <h2 class="card-title">SHIPPER DETAILS</h2>
+            <span class="card-icon">
+              <!-- Building/Factory Icon -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="9" y1="22" x2="9" y2="16"></line><line x1="15" y1="22" x2="15" y2="16"></line><line x1="9" y1="16" x2="15" y2="16"></line><path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M8 10h.01"></path><path d="M16 10h.01"></path></svg>
+            </span>
+          </div>
+          <div class="card-body">
+            <div class="textarea-wrapper">
+              <textarea id="shipperDetailsTop" class="si-textarea" name="shipperDetailsTop" placeholder="Enter Shipper Full Address..." rows="5"></textarea>
+              <div class="textarea-counter" id="shipperCounterTop">Line 1: 0/45 | 0/5 lines</div>
+            </div>
+            <p class="helper-text">It allows Only 5 rows and in each row it allows only 45 characters</p>
+          </div>
+        </div>
+
+        <!-- Consignee Details (Top) -->
+        <div class="card details-card">
+          <div class="card-header">
+            <h2 class="card-title">CONSIGNEE DETAILS</h2>
+            <span class="card-icon">
+              <!-- Location Map Pin Icon -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </span>
+          </div>
+          <div class="card-body">
+            <div class="textarea-wrapper">
+              <textarea id="consigneeDetailsTop" class="si-textarea" name="consigneeDetailsTop" placeholder="Enter Consignee Full Address..." rows="5"></textarea>
+              <div class="textarea-counter" id="consigneeCounterTop">Line 1: 0/45 | 0/5 lines</div>
+            </div>
+            <p class="helper-text">It allows Only 5 rows and in each row it allows only 45 characters</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: Notify Details & B/L Configuration -->
+      <div class="grid-layout-notify-bl">
+        <!-- Notify Details -->
+        <div class="card details-card">
+          <div class="card-header header-has-button">
+            <h2 class="card-title">NOTIFY DETAILS</h2>
+            <button type="button" class="btn btn-secondary btn-copy" id="btnCopyConsignee">
+              <!-- Copy Icon -->
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>COPY IF SAME AS CONSIGNEE</span>
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="textarea-wrapper">
+              <textarea id="notifyDetails" class="si-textarea" name="notifyDetails" placeholder="Enter Notify Party Details..." rows="5"></textarea>
+              <div class="textarea-counter" id="notifyCounter">Line 1: 0/45 | 0/5 lines</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- B/L Configuration -->
+        <div class="card details-card">
+          <div class="card-header">
+            <h2 class="card-title">B/L CONFIGURATION</h2>
+            <span class="card-icon">
+              <!-- Settings/Sliders Icon -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+            </span>
+          </div>
+          <div class="card-body flex-column-gapped">
+            <div class="form-group">
+              <label for="noOfOriginalBL" class="form-label">No. of Original Bill of Lading</label>
+              <div class="select-wrapper">
+                <select id="noOfOriginalBL" name="noOfOriginalBL" required>
+                  <option value="" disabled selected>Please Select</option>
+                  <option value="0">0 (Telex/Express Release)</option>
+                  <option value="3">3 (Three Original B/L)</option>
+                  <option value="3+3">3 + 3 (Original + Copy)</option>
+                  <option value="1">1 (One Original B/L)</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="blType" class="form-label">BL Type</label>
+              <div class="select-wrapper">
+                <select id="blType" name="blType" required>
+                  <option value="" disabled selected>Please Select</option>
+                  <option value="ORIGINAL">Original B/L</option>
+                  <option value="SEAWAY_BILL">Seaway Bill</option>
+                  <option value="SURRENDER">Surrendered / Telex Release</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 3: Container Details -->
+      <div class="card details-card">
+        <div class="card-header header-has-button">
+          <h2 class="card-title">CONTAINER DETAILS</h2>
+          <!-- Manual addition disabled as per requirement -->
+          <button type="button" class="btn btn-round-plus" id="btnAddContainer" title="Add Container Row" style="display: none;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </button>
+        </div>
+        <div class="card-body no-padding table-scrollable">
+          <table class="container-table" id="containerTable">
+            <thead>
+              <tr>
+                <th style="width: 50px;">SI NO</th>
+                <th>CONTAINER NO</th>
+                <th>TYPE</th>
+                <th>SEAL NO</th>
+                <th>NO. OF PKGS</th>
+                <th>PKG UNIT</th>
+                <th>GROSS WT</th>
+                <th>NET WT</th>
+                <th>WT UNIT</th>
+                <th>VOLUME</th>
+              </tr>
+            </thead>
+            <tbody id="containerTableBody">
+              <!-- Rendered dynamically from initialization data -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Row 4: Volume Details -->
+      <div class="card details-card">
+        <div class="card-header">
+          <div class="header-with-description">
+            <h2 class="card-title">VOLUME DETAILS</h2>
+            <span class="card-description-badge">Calculated Summary (Read-Only)</span>
+          </div>
+          <span class="card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </span>
+        </div>
+        <div class="card-body">
+          <div class="grid-3-col">
+            <div class="form-group">
+              <label for="volumeGrossWeight" class="form-label font-medium">Gross Weight</label>
+              <input type="number" id="volumeGrossWeight" name="volumeGrossWeight" class="form-input text-right bold-input" value="0" min="0" step="0.01" readonly>
+            </div>
+            <div class="form-group">
+              <label for="volumeNetWeight" class="form-label font-medium">Net Weight</label>
+              <input type="number" id="volumeNetWeight" name="volumeNetWeight" class="form-input text-right bold-input" value="0" min="0" step="0.01" readonly>
+            </div>
+            <div class="form-group">
+              <label for="volumeCBM" class="form-label font-medium">CBM</label>
+              <input type="number" id="volumeCBM" name="volumeCBM" class="form-input text-right bold-input" value="0" min="0" step="0.01" readonly>
+            </div>
+            <div class="form-group">
+              <label for="totalNoContainers" class="form-label font-medium">Total No. of Containers</label>
+              <input type="number" id="totalNoContainers" name="totalNoContainers" class="form-input text-right bold-input" value="0" min="0" step="1" readonly>
+            </div>
+            <div class="form-group">
+              <label for="volumeNoOfPackages" class="form-label font-medium">No.Of Packages</label>
+              <input type="number" id="volumeNoOfPackages" name="volumeNoOfPackages" class="form-input text-right bold-input" value="0" min="0" step="1" readonly>
+            </div>
+            <div class="form-group">
+              <label for="volumePackageUnit" class="form-label font-medium">Package Unit</label>
+              <input type="text" id="volumePackageUnit" name="volumePackageUnit" class="form-input bold-input" value="Please Select" readonly>
+            </div>
+          </div>
+          
+          <div class="calc-btn-container">
+            <button type="button" class="btn btn-teal-action" id="btnCalculate" style="display: none;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg>
+              <span>CALCULATE GROSS WEIGHT AND MEASUREMENT</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 5: Port & Vessel Details -->
+      <div class="card details-card">
+        <div class="card-header header-has-button">
+          <h2 class="card-title">PORT & VESSEL DETAILS</h2>
+          <button type="button" class="btn btn-secondary-outline btn-small" id="btnToggleEditPort">
+            <!-- Edit Icon -->
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+            <span>Edit Details</span>
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="grid-6-col" id="portDetailsContainer">
+            <div class="detail-item">
+              <span class="detail-label">PORT OF RECEIPT</span>
+              <input type="text" class="detail-value-input" name="portReceipt" value="TUTICORIN" readonly>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">PORT OF LOADING</span>
+              <input type="text" class="detail-value-input" name="portLoading" value="TUTICORIN" readonly>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">PORT OF DISCHARGE</span>
+              <input type="text" class="detail-value-input" name="portDischarge" value="WEST PORT KLANG, MAL" readonly>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">FINAL DESTINATION</span>
+              <input type="text" class="detail-value-input" name="finalDestination" value="WEST PORT KLANG, MAL" readonly>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">VESSEL</span>
+              <input type="text" class="detail-value-input" name="vessel" value="ZHONG PENG YOU YI" readonly>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">VOYAGE</span>
+              <input type="text" class="detail-value-input" name="voyage" value="26041" readonly>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 6: Shipper & Consignee Details (Bottom - Mirror or Edit) -->
+      <div class="grid-2-col">
+        <!-- Shipper Details (Bottom) -->
+        <div class="card details-card">
+          <div class="card-header header-has-button">
+            <div class="header-with-description">
+              <h2 class="card-title">SHIPPER DETAILS</h2>
+              <span class="card-description-badge sync-status" id="shipperSyncBadge">Sync Active</span>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="syncShipperToggle" checked>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="card-body">
+            <div class="textarea-wrapper">
+              <textarea id="shipperDetailsBottom" class="si-textarea" name="shipperDetailsBottom" placeholder="Enter Shipper Full Address..." rows="5"></textarea>
+              <div class="textarea-counter" id="shipperCounterBottom">Line 1: 0/45 | 0/5 lines</div>
+            </div>
+            <p class="helper-text">It allows Only 5 rows and in each row it allows only 45 characters</p>
+          </div>
+        </div>
+
+        <!-- Consignee Details (Bottom) -->
+        <div class="card details-card">
+          <div class="card-header header-has-button">
+            <div class="header-with-description">
+              <h2 class="card-title">CONSIGNEE DETAILS</h2>
+              <span class="card-description-badge sync-status" id="consigneeSyncBadge">Sync Active</span>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="syncConsigneeToggle" checked>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="card-body">
+            <div class="textarea-wrapper">
+              <textarea id="consigneeDetailsBottom" class="si-textarea" name="consigneeDetailsBottom" placeholder="Enter Consignee Full Address..." rows="5"></textarea>
+              <div class="textarea-counter" id="consigneeCounterBottom">Line 1: 0/45 | 0/5 lines</div>
+            </div>
+            <p class="helper-text">It allows Only 5 rows and in each row it allows only 45 characters</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit Section -->
+      <div class="submit-action-container">
+        <button type="submit" class="btn btn-large-submit" id="btnSubmitSI">
+          <span>SUBMIT SI</span>
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Success Modal -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal-card">
+      <div class="modal-header-success">
+        <div class="success-icon-badge">
+          <!-- Big Checkmark -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <h3 class="modal-title">Shipping Instructions Submitted</h3>
+        <p class="modal-subtitle">SI submission processed successfully for Job <strong id="modalJobNo">TCRNE60020</strong></p>
+      </div>
+      <div class="modal-body">
+        <p class="modal-body-title">Submitted JSON Summary</p>
+        <div class="json-summary-container">
+          <pre id="jsonSummaryContent">{}</pre>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btnCopyToClipboard">
+          <!-- Copy Icon -->
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          <span>Copy Data</span>
+        </button>
+        <button type="button" class="btn btn-primary" id="btnDismissModal">
+          <span>Close Window</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
